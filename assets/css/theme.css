@@ -1,0 +1,421 @@
+/* ============================================================
+   theme.css  – GS Family Management System
+   Professional Data-Focused Color Redesign
+   Clean, neutral, high-contrast palette for large datasets
+   ============================================================ */
+
+/* ── 1. ROOT COLOR TOKENS ────────────────────────────────── */
+:root {
+    /* ── Primary Brand: Professional Slate-Blue ── */
+    --primary:           #1a5fa8;   /* Medium professional blue  */
+    --primary-light:     #2878c9;   /* Lighter blue for hovers   */
+    --primary-pale:      #e8f1fb;   /* Very light blue tint      */
+    --primary-dark:      #154d8a;   /* Darker shade for contrast */
+
+    /* ── Accent (replaces gold – uses teal-cyan) ── */
+    --accent:            #0891b2;   /* Clear cyan-teal           */
+    --accent-light:      #06b6d4;
+
+    /* ── Supporting (replaces dark emerald) ── */
+    --emerald:           #0d7a55;   /* Clean green               */
+    --emerald-light:     #10b981;
+
+    /* ── Page backgrounds ── */
+    --bg-main:           #eef2f7;   /* Soft blue-gray – easy on eyes */
+    --bg-card:           #ffffff;   /* Pure white cards          */
+    --bg-sidebar:        #1e293b;   /* Dark slate for nav        */
+
+    /* ── Text ── */
+    --text-dark:         #0f172a;   /* Near-black – high contrast */
+    --text-body:         #1e293b;   /* Body text                 */
+    --text-muted:        #4b5563;   /* Muted labels              */
+    --text-light:        #94a3b8;   /* Placeholder / hints       */
+    --white:             #ffffff;
+
+    /* ── Table-specific ── */
+    --table-header-bg:   #1a5fa8;   /* Blue header               */
+    --table-header-txt:  #ffffff;   /* White header text         */
+    --table-row-even:    #ffffff;   /* Even rows                 */
+    --table-row-odd:     #f5f8ff;   /* Odd rows – very subtle blue tint */
+    --table-row-hover:   #ebf3ff;   /* Row hover highlight       */
+    --table-border:      #dde5f0;   /* Soft blue-gray border     */
+
+    /* ── Status colours ── */
+    --error:             #dc2626;
+    --success:           #059669;
+    --warning:           #d97706;
+    --info:              #0891b2;
+
+    /* ── Borders & Shadows ── */
+    --border:            #dde5f0;
+    --border-light:      #e8edf6;
+    --shadow-sm:         0 1px 3px rgba(15, 76, 140, 0.08);
+    --shadow-md:         0 4px 12px rgba(15, 76, 140, 0.10);
+    --shadow-lg:         0 8px 24px rgba(15, 76, 140, 0.12);
+
+    /* ── Radii & Transition (unchanged) ── */
+    --radius-sm:         8px;
+    --radius-md:         12px;
+    --radius-lg:         16px;
+    --transition:        all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── 2. BODY & GLOBAL ────────────────────────────────────── */
+body {
+    background-color: var(--bg-main) !important;
+    color: var(--text-body) !important;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 3. NAVIGATION ───────────────────────────────────────── */
+nav.glass-dark,
+.glass-dark {
+    background: var(--bg-sidebar) !important;  /* Dark slate – not teal */
+    backdrop-filter: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+
+/* Back arrow button in category pages */
+nav.glass-dark a[onclick],
+nav.glass-dark button[onclick] {
+    color: rgba(255,255,255,0.75) !important;
+}
+nav.glass-dark a[onclick]:hover,
+nav.glass-dark button[onclick]:hover {
+    color: #ffffff !important;
+}
+
+/* ── 4. GLASS CARDS ──────────────────────────────────────── */
+.glass {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: var(--shadow-md) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* ── 5. STAT CARDS ───────────────────────────────────────── */
+.stat-card.glass {
+    background: #ffffff !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    transition: transform 0.18s, box-shadow 0.18s !important;
+}
+.stat-card.glass:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+.stat-icon {
+    background: var(--primary-pale) !important;
+    color: var(--primary) !important;
+}
+
+/* ── 6. TABLES ───────────────────────────────────────────── */
+
+/* Base table */
+table {
+    border-collapse: collapse !important;
+    background: #ffffff !important;
+    width: 100% !important;
+}
+
+/* Shared header style */
+th {
+    background: var(--table-header-bg) !important;
+    color: var(--table-header-txt) !important;
+    font-size: 0.70rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.45px !important;
+    padding: 0.65rem 0.6rem !important;
+    white-space: nowrap !important;
+    border-bottom: 2px solid var(--primary-dark) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 2 !important;
+}
+
+/* Table data cells */
+td {
+    padding: 0.52rem 0.6rem !important;
+    border-bottom: 1px solid var(--table-border) !important;
+    font-size: 0.8rem !important;
+    color: var(--text-body) !important;
+    vertical-align: middle !important;
+}
+
+/* Zebra striping */
+tbody tr:nth-child(odd)  td { background-color: var(--table-row-odd)  !important; }
+tbody tr:nth-child(even) td { background-color: var(--table-row-even) !important; }
+
+/* Row hover */
+tbody tr:hover td {
+    background-color: var(--table-row-hover) !important;
+    cursor: default;
+}
+
+/* .details-table overrides */
+.details-table th {
+    background: var(--table-header-bg) !important;
+    color: var(--table-header-txt) !important;
+    font-size: 0.68rem !important;
+    padding: 0.6rem 0.55rem !important;
+}
+.details-table td {
+    padding: 0.48rem 0.55rem !important;
+    border-bottom: 1px solid var(--table-border) !important;
+    font-size: 0.78rem !important;
+}
+.details-table tbody tr:nth-child(odd)  td { background-color: var(--table-row-odd)  !important; }
+.details-table tbody tr:nth-child(even) td { background-color: var(--table-row-even) !important; }
+.details-table tbody tr:hover td { background-color: var(--table-row-hover) !important; }
+
+/* Family head row – keep gold highlight but softer */
+.details-table tr.is-family-head td {
+    background: linear-gradient(90deg, #fef9e7 0%, transparent 70%) !important;
+    font-weight: 600 !important;
+}
+.details-table tr.is-family-head:hover td {
+    background: linear-gradient(90deg, #fef3c7 0%, var(--table-row-hover) 70%) !important;
+}
+
+/* ── 7. BUTTONS ──────────────────────────────────────────── */
+.btn {
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    transition: var(--transition) !important;
+    letter-spacing: 0.2px !important;
+}
+
+.btn-primary {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 1px 3px rgba(26,95,168,0.25) !important;
+}
+.btn-primary:hover {
+    background: var(--primary-light) !important;
+    box-shadow: 0 4px 12px rgba(26,95,168,0.35) !important;
+    transform: translateY(-1px) !important;
+}
+
+.btn-accent {
+    background: var(--accent) !important;
+    color: #ffffff !important;
+}
+.btn-accent:hover {
+    background: var(--accent-light) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Upload Excel button (teal override in pages) */
+button[style*="background:#0f4c5c"],
+button[style*="background: #0f4c5c"] {
+    background: var(--accent) !important;
+}
+
+/* ── 8. FORMS & INPUTS ───────────────────────────────────── */
+input, select, textarea {
+    border-color: var(--border) !important;
+    background: #ffffff !important;
+    color: var(--text-body) !important;
+    transition: border-color 0.18s, box-shadow 0.18s !important;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(26,95,168,0.12) !important;
+    outline: none !important;
+}
+
+/* Filter inputs */
+.filter-group input,
+.filter-group select {
+    border-color: var(--border) !important;
+    background: #ffffff !important;
+    color: var(--text-body) !important;
+}
+.filter-group input:focus,
+.filter-group select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px rgba(26,95,168,0.12) !important;
+}
+
+/* ── 9. BADGES ───────────────────────────────────────────── */
+.badge-yes  {
+    background: rgba(5,150,105,0.10) !important;
+    color: #065f46 !important;
+    font-weight: 700 !important;
+}
+.badge-no   {
+    background: #f1f5f9 !important;
+    color: #64748b !important;
+}
+.badge-flag {
+    background: rgba(220,38,38,0.10) !important;
+    color: #991b1b !important;
+}
+.badge-head {
+    background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+    color: #78350f !important;
+    border-color: #f59e0b !important;
+}
+
+/* ── 10. FILTER PANEL ────────────────────────────────────── */
+#advFilterPanel > .glass {
+    background: #f8faff !important;
+    border: 1px solid var(--border) !important;
+    border-left: 3px solid var(--primary) !important;
+}
+
+/* Filter toggle button */
+.btn-filter-toggle {
+    background: #ffffff !important;
+    border: 1.5px solid var(--border) !important;
+    color: var(--text-body) !important;
+}
+.btn-filter-toggle:hover,
+.btn-filter-toggle.active {
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+    background: var(--primary-pale) !important;
+}
+
+/* Clear filters link */
+.btn-clear-filters {
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+    border-radius: 8px !important;
+}
+.btn-clear-filters:hover {
+    background: #fecaca !important;
+    color: #991b1b !important;
+}
+
+/* ── 11. FILTER PANEL HEADER TEXT ────────────────────────── */
+#advFilterPanel strong { color: var(--primary) !important; }
+.filter-group label    { color: var(--text-muted) !important; }
+
+/* ── 12. PAGINATION ──────────────────────────────────────── */
+/* Active page */
+div[style*="background: var(--primary)"],
+a[style*="background: var(--primary)"],
+a[style*="background:var(--primary)"] {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+}
+
+/* ── 13. DELETE MODAL ────────────────────────────────────── */
+.delete-modal-box {
+    border-top: 4px solid var(--error) !important;
+}
+
+/* ── 14. BULK ACTIONS BAR ────────────────────────────────── */
+#bulkActions {
+    background: #fff5f5 !important;
+    border-color: #fecaca !important;
+}
+
+/* ── 15. SECTION HEADINGS ────────────────────────────────── */
+h3 { color: var(--text-dark) !important; }
+h4 { color: var(--text-dark) !important; }
+
+/* Table container rounded corners */
+.table-container, .glass > .table-container {
+    border-radius: var(--radius-md) !important;
+    overflow: hidden !important;
+}
+
+/* ── 16. SCROLL HINT ─────────────────────────────────────── */
+.scroll-hint { color: var(--text-light) !important; }
+
+/* ── 17. UPLOAD DROPZONE ─────────────────────────────────── */
+.upload-dropzone {
+    border-color: var(--border) !important;
+    background: var(--bg-main) !important;
+}
+.upload-dropzone:hover {
+    border-color: var(--primary) !important;
+    background: var(--primary-pale) !important;
+}
+
+/* ── 18. AUTH / LOGIN PAGE ───────────────────────────────── */
+.auth-wrapper {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent) 100%) !important;
+}
+
+/* ── 19. DASHBOARD CATEGORY CARDS ───────────────────────── */
+/* Category link cards on dashboard */
+a[href*=".php"] > .stat-card.glass:hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 6px 20px rgba(26,95,168,0.18) !important;
+}
+
+/* ── 20. INLINE STYLE OVERRIDES ──────────────────────────── */
+/* Override hard-coded dark teal color used in inline styles */
+[style*="color:var(--primary)"],
+[style*="color: var(--primary)"] {
+    color: var(--primary) !important;
+}
+[style*="background: var(--primary)"],
+[style*="background:var(--primary)"] {
+    background: var(--primary) !important;
+}
+[style*="border-color: var(--primary)"],
+[style*="border-color:var(--primary)"] {
+    border-color: var(--primary) !important;
+}
+
+/* ── 21. BACK BUTTON (category pages) ───────────────────── */
+a[style*="color: white"][style*="text-decoration: none"] {
+    opacity: 0.88;
+}
+a[style*="color: white"][style*="text-decoration: none"]:hover {
+    opacity: 1;
+}
+
+/* ── 22. LANG BUTTONS ────────────────────────────────────── */
+.lang-btn.active {
+    background: #ffffff !important;
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+}
+
+/* ── 23. WIZARD STEP NUMBERS ─────────────────────────────── */
+.step.active .step-num {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(26,95,168,0.30) !important;
+}
+
+/* ── 24. ANIMATED FADE ───────────────────────────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0);   }
+}
+.animate-fade { animation: fadeIn 0.35s ease-out forwards; }
+
+/* ── 25. SCROLLBAR STYLING (Webkit) ─────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb {
+    background: #c0cde0;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ── 26. FOCUS RING STANDARDIZATION ─────────────────────── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ── 27. SELECTION HIGHLIGHT ─────────────────────────────── */
+::selection {
+    background: rgba(26, 95, 168, 0.18);
+    color: var(--text-dark);
+}
